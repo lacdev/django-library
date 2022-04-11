@@ -8,6 +8,8 @@ import pytest
 def test_one():
 	assert 1 == 1
 
+
+
 @pytest.fixture
 def fixture_per_func():
 	print('run-fixture-per-func')

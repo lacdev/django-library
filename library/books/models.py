@@ -6,7 +6,8 @@ class Author(models.Model):
 	last_name = models.CharField(max_length=128, null=True)
 
 	def __str__(self):
-        return f'{self.name} {self.last_name}'
+		return f'{self.name} {self.last_name}'
+	 #	return f'{self.name} {self.last_name}'
 
 class Language(models.Model):
     language = models.CharField(max_length=200)
@@ -31,7 +32,7 @@ class Book(models.Model):
 	# books_authors = models.OneToOneField(Author, through='BookAuthor')
 
 	def __str__(self):
-        return f'{self.name}'
+		return f'{self.name}'
 
 # class BookAuthor(models.Model):
 class BooksAuthors(models.Model):
