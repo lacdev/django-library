@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from library.books.serializers import *
+from .serializers import *
 
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all().order_by('name')

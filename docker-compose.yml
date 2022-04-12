@@ -17,7 +17,7 @@ services:
 
   web13:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8044"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8013"
     container_name: "django13"
     depends_on: 
       - postgres_db13
@@ -25,7 +25,7 @@ services:
       - "PSQL_DBNAME=german_martinezdb"
       - "PSQL_USERNAME=german_martinez"
       - "PSQL_PASS=SecretPassword123"
-      - "PSQL_HOST=172.24.0.29" # You must use the previous command in order to get this HOST
+      - "PSQL_HOST=postgres_db13" # You must use the previous command in order to get this HOST
       - "PSQL_PORT=5513"
     volumes:
     # "RUTA/DEL/SERVIDOR:RUTA/DENTRO/DEL/CONTENEDOR"

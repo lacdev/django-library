@@ -18,15 +18,39 @@ def test_author_name(nombre, apellido):
     author.delete()
 
 
-# @pytest.mark.django_db
-# def test_author_with_monkey(monkeypatch):
-#     author = Author.objects.create(name = "nombre", last_name = "apellido")
-#     def model_count_mock():
-#         return 4
+@pytest.mark.django_db
+def test_author_with_monkey(monkeypatch):
+    author = Author.objects.create(name = "nombre", last_name = "apellido")
 
-#     monkeypatch.setattribute(author.objects.all(), "count", model_count_mock)
-#     assert Author.objects.all().count() == 4
-#     print("Haciendo el monkeypatch")
+    class AuthorQuerysetMock():
+        def __init__(self):
+          self.some_value = 1
+
+        def count(self):
+          return 4
+
+    def model_count_mock():
+      return AuthorQuerysetMock()
+
+    monkeypatch.setattr(Author.objects, "all", model_count_mock)
+
+    assert Author.objects.all().count() == 4
+    print("Haciendo el monkeypatch")
+    
+
+    # def model_count_mock():
+    #     return 4
+    # print(dir(Author.objects))
+    # print(type(Author.objects))
+    # print(type(Author.objects.all()))
+    # print(dir(Author.objects.all()))    
+    # monkeypatch.setattr(Author.objects, "count", model_count_mock)
+
+    # assert Author.objects.count() == 4
+    # print("haciendo el monkeypatch")
+
+
+
 
 # Homework Tests
 
