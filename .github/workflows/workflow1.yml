@@ -20,7 +20,6 @@ jobs:
         run: |
           docker network create -d bridge our-library-net
       - name: Build django image
-      - name: 
         run: |
           docker build -t my-django-image13:2.0.0 .
       - name: Run docker containers
