@@ -31,7 +31,7 @@ class LoginView(APIView):
 
 class LogoutView(GenericAPIView):
     serializer_class = RefreshTokenSerializer
-    # permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated, )
 
     def post(self, request, *args):
         sz = self.get_serializer(data=request.data)
