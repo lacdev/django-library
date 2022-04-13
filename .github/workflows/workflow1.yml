@@ -4,9 +4,9 @@ on:
     workflow_call:
     workflow_dispatch:
     push:
-       branches: [main, pytest]
+       branches: [main]
     pull_request:
-        branches: [main, pytest]
+        branches: [main]
 jobs:
   simple_build:
     runs-on: ubuntu-latest
