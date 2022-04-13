@@ -13,14 +13,15 @@ services:
       - "${POSTGRES_VOLUME_PATH}:/usr/src/postgres"
     networks:
       - our-library-net
-    command: "-p 55${PORT}"
+    command: -p 5513
 
   web13:
     build: .
+    image: my-django-image13:2.0.0
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:80${PORT}"
     container_name: "django${PORT}"
     depends_on: 
-      - "postgres_db${PORT}"
+      - postgres_db13
     environment:
       - "PSQL_DBNAME=${PSQL_DB}"
       - "PSQL_USERNAME=${PSQL_USER}"
