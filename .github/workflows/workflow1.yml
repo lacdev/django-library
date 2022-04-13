@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: pytest # Checkout with pytest branch
+          ref: main # Checkout with main branch
       - name: Create docker network
         run: |
           docker network create -d bridge our-library-net
