@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+class Thing(models.Model):
+    name = models.CharField(max_length = 128)
+    image = models.TextField(null = False)
+
 class Author(models.Model):
     name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128, null = True)

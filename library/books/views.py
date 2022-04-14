@@ -2,6 +2,12 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import *
+import base64
+
+class ThingViewSet(viewsets.ModelViewSet):
+    queryset = Thing.objects.all().order_by('id')
+    serializer_class = ThingSerializer
+    permission_classes = []
 
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all().order_by('name')

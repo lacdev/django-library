@@ -10,6 +10,7 @@ router.register(r'genre', views.GenreViewSet)
 router.register(r'authors', views.BooksAuthorsViewSet)
 router.register(r'genres', views.BooksGenresViewSet)
 router.register(r'languages', views.BooksLanguagesViewSet)
+router.register(r'thing', views.ThingViewSet)
 router.register(r'', views.BookViewSet)
 # La url vacia tiene que ir al final.
 
