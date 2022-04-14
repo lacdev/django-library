@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/grmnmtz/django-library.svg?branch=main)](https://app.travis-ci.com/grmnmtz/django-library)
+
 # Django-and-Django-REST-Framework
 
 ## Setup
