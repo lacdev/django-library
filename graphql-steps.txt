@@ -1,0 +1,40 @@
+INSTALL GRAPHENE
+
+pip install graphene-django
+pip freeze > requirements.txt
+
+IMPORT GRAPHENE
+
+{setting.py - at imports} This fixes Djangov4 errors
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
+
+{setting.py - INSTALLED_APPS}
+"graphene_django"
+
+{setting.py - anywhere}
+GRAPHENE = {
+    "SCHEMA": "library.books.schema.schema"
+}
+
+CREATE SCHEME
+
+{books/schema.py}
+import graphene
+
+class Query(graphene.ObjectType):
+    hello = graphene.String(default_value="Hi!")
+    world = graphene.String(default_value="World!")
+
+schema = graphene.Schema(query=Query)
+
+CREATE URLS
+
+{library/urls.py}
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
+
+urlpatterns = [
+    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+]

@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from os import getenv, environ as env
 from pathlib import Path
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,9 +60,9 @@ INSTALLED_APPS = [
     'library.editorial',
     'library.users',
     'library.books',
+    "graphene_django",
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    # "graphene_django"
 ]
 
 MIDDLEWARE = [
@@ -143,9 +146,6 @@ CACHES = {
     }
 }
 
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -187,6 +187,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# GRAPHENE = {
-#     'SCHEMA': 'django_root.schema.schema'
-# }
+GRAPHENE = {
+    'SCHEMA': 'library.books.schema.schema'
+}
